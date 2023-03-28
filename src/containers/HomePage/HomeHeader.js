@@ -47,13 +47,13 @@ class HomeHeader extends Component {
                         </div>
                         <div className='header-content-right'>
                             <div className='header-content-help'>
-                                <i class="fas fa-question-circle"></i>
+                                <i className="fas fa-question-circle"></i>
                                 <div><span><FormattedMessage id="home-header.help" /></span></div>
                             </div>
                             <div className='header-content-language'>
-                                <div className={this.props.lang === 'en' ? 'language-en active' : 'language-en'}>
+                                <div className={this.props.lang === LANGUAGES.EN ? 'language-en active' : 'language-en'}>
                                     <span onClick={() => { this.handleChangeLanguage(LANGUAGES.EN) }}>EN</span></div>
-                                <div className={this.props.lang === 'vi' ? 'language-vi active' : 'language-vi'}>
+                                <div className={this.props.lang === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}>
                                     <span
                                         onClick={() => { this.handleChangeLanguage(LANGUAGES.VI) }}>VI</span></div>
                             </div>
@@ -100,32 +100,32 @@ class HomeHeader extends Component {
                                     </div>
                                 </li>
                                 <li className='options-child'>
-                                    <i class="fas fa-heart"></i>
+                                    <i className="fas fa-heart"></i>
                                     <div className='options-child-text'>
                                         <span><FormattedMessage id="home-banner.mental-health" /></span>
                                     </div>
                                 </li>
                                 <li className='options-child'>
-                                    <i class="fas fa-user-md"></i>
+                                    <i className="fas fa-user-md"></i>
                                     <div className='options-child-text'>
                                         <span><FormattedMessage id="home-banner.dental-examination" /></span>
                                     </div>
                                 </li>
                                 <li className='options-child'>
-                                    <i class="fas fa-archive"></i>
+                                    <i className="fas fa-archive"></i>
                                     <div className='options-child-text'>
                                         <span><FormattedMessage id="home-banner.surgery-package" /></span>
                                     </div>
                                 </li>
                                 <li className='options-child'>
-                                    <i class="fas fa-ambulance"></i>
+                                    <i className="fas fa-ambulance"></i>
                                     <div className='options-child-text'>
                                         <span><FormattedMessage id="home-banner.medical-products" /></span>
                                     </div>
                                 </li>
 
                                 <li className='options-child'>
-                                    <i class="fas fa-notes-medical"></i>
+                                    <i className="fas fa-notes-medical"></i>
                                     <div className='options-child-text'>
                                         <span><FormattedMessage id="home-banner.company-health" /></span>
                                     </div>

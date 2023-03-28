@@ -8,16 +8,71 @@
     color: $common-text-color;
     height: 40px;
     position: relative;
-    .btn-logout {
-        color: $common-text-color;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 10px;
-        &:hover {
-            background-color: darken($colormain, 5);
+    
+    .header-right {
+        display: flex;
+        .btn-logout {
+            color: $common-text-color;
+            line-height: 40px;
+            height: 40px;
+            padding: 0 10px;
+            &:hover {
+                background-color: darken($colormain, 5);
+            }
+            i {
+                font-size: $base-size + 1px;
+            }
+    
+           
         }
-        i {
-            font-size: $base-size + 1px;
+
+        .header-welcome {
+            span {
+                line-height: 40px;
+                margin-right: 12px;
+            }
+        }
+
+        .language-en {
+            cursor: pointer;
+            opacity: 0.5;
+            line-height: 40px;
+            color: #969495;
+            font-weight: 600;
+
+
+            &.active {
+            opacity: 1;
+                span {
+                    color: red
+                }
+            }
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+        .language-vi {
+            cursor: pointer;
+            opacity: 0.5;
+            line-height: 40px;
+            margin: 0 10px;
+            color: #3b2f35;
+            font-weight: 600;
+
+
+            &.active {
+            opacity: 1;
+
+                span {
+                    color: orange
+                }
+            }
+
+            &:hover {
+                opacity: 0.8;
+            }
         }
     }
 }

@@ -47,20 +47,10 @@ class Login extends Component {
                 })
             }
             if (data && data.errCode === 0) {
+                console.log('check user login ', data.user)
                 this.props.userLoginSuccess(data.user)
-                console.log('login success')
             }
         } catch (error) {
-            console.log('in catch')
-            // if (error.respone) {
-            //     console('has respone')
-            //     if (error.responerror.data) {
-            //         console.log('has data')
-            //         this.setState({
-            //             errMessage: error.response.data.message
-            //         })
-            //     }
-            // }
 
             this.setState({
                 errMessage: error.response.data.message

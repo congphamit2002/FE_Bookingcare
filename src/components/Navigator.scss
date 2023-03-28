@@ -38,6 +38,9 @@
                 .menu-link {
                     text-decoration: none;
                     color: $text-in-light;
+                    display: block;
+                    height: 100%;
+                    width: 100%;
                 }
                 .sub-menu-list {
                     display: none;
@@ -69,9 +72,9 @@
                         }
                     }
                 }
-                &.active span {
+                &.active a {
                     font-weight: 500;
-                    color: $colormain;
+                    color: orange;
                 }
                 &:hover {
                     background-color: darken($bg-menu-color, 3);

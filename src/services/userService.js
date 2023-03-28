@@ -23,4 +23,12 @@ const handleUpdateUserService = (data) => {
     return axios.post('/api/update-user', data)
 }
 
-export { handleLoginApi, handleGetAllUsersService, handleCreateNewUserService, handleDeleteUserService, handleUpdateUserService }  
+const handleGetAllCode = (type) => {
+    return axios.get(`/api/getAllCode?type=${type}`);
+}
+
+const handleGetTopDoctor = (numberGet) => {
+    return axios.get(`/api/getTopDoctor?numberGet=${numberGet}`)
+}
+
+export { handleLoginApi, handleGetAllUsersService, handleCreateNewUserService, handleDeleteUserService, handleUpdateUserService, handleGetAllCode, handleGetTopDoctor }  

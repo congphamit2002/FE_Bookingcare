@@ -12,9 +12,10 @@ export const LANGUAGES = {
 };
 
 export const manageActions = {
-    ADD: "ADD",
-    EDIT: "EDIT",
-    DELETE: "DELETE"
+    CREATE: 'CREATE',
+    EDIT: 'EDIT',
+    UPDATE: 'UPDATE',
+    DELETE: 'DELETE'
 };
 
 export const dateFormat = {

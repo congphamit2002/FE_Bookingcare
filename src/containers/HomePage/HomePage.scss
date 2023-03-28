@@ -78,6 +78,10 @@
                     
                 }
 
+                .slick-disabled {
+                    display: none !important;
+                }
+
                 .slider-item {
 
                     .doctor-item-container {
@@ -122,10 +126,6 @@
     
                         &.facilities-img {
                             background-image: url('../../assets/images/facilities/logo-sihg.png');
-                        }
-
-                        &.doctor-img {
-                            background-image: url('../../assets/images/OutStandingDoctor/doctor-check.jpg');
                         }
 
                         &.handbook-img {
