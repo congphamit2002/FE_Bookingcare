@@ -1,0 +1,74 @@
+    .manage-schedule-container {
+    display: flex;
+    margin: 28px 150px 40px;
+    .ms-content-left {
+        width: 50%;
+
+        .select-dropdown {
+            select {
+                border: none;
+                border-bottom: 1px solid #333;
+                font-size: 16px;
+                color: #337ab7;
+                outline: none;
+                font-weight: 500;
+                padding: 8px 0;
+            }
+                
+        }
+
+        .calendar-icon {
+            font-size: 14px;
+            color: #333;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin: 12px 0;
+            i {
+                margin-right: 8px;
+            }
+        }
+
+        .available-schedule {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+
+            .btn-schedule {
+                outline: none;
+                border: none;
+                background-color: #fff8ae;
+                font-size: 14px;
+                color: #333;
+                font-weight: 600;
+                padding: 8px 0;
+
+                &.schedule-vi {
+                    
+                min-width: 140px;
+                }
+
+                &.schedule-en {
+                    
+                    min-width: 184px;
+                    }
+
+                &:hover {
+                    background-color: #5cd8e5;
+                    color: #fff;
+                }
+            }
+
+            .no-schedule {
+                font-style: italic;
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+
+    }
+
+    .ms-content-right {
+        width: 50%;
+        padding-top: 80px;
+    }
+}

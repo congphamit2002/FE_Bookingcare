@@ -1,0 +1,38 @@
+.container {
+    position: relative;
+    .upload-file {
+        display: flex;
+        flex-direction: column;
+    //     position: absolute;
+    // right: 40px;
+    // top: 148px;
+
+        .preview-img {
+            width: 94px;
+            background-color: #ccc;
+            padding: 8px;
+            border-radius: 10px;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        i {
+            font-size: 16px;
+        }
+
+        .preview-image {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    }
+
+    .btn-submit {
+        position: absolute;
+        bottom: 40%;
+    }
+}

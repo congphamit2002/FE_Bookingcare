@@ -7,11 +7,67 @@ import { KeyCodeUtils, LanguageUtils } from "../../utils";
 
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
+import { handleLoginApi } from '../../services/userService';
+import { userLoginSuccess } from '../../store/actions';
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.btnLogin = React.createRef();
+        this.state = {
+            username: '',
+            password: '',
+            isShowHidePassword: false,
+            errMessage: ''
+        }
+    }
+
+    handleOnchangeUsername = (event) => {
+        this.setState({
+            username: event.target.value
+        })
+    }
+
+    handleOnchangePassword = (event) => {
+        this.setState({
+            password: event.target.value
+        })
+    }
+
+    handleLogin = async (event) => {
+        this.setState({
+            errMessage: ''
+        });
+
+        try {
+            let data = await handleLoginApi(this.state.username, this.state.password);
+            if (data && data.errCode !== 0) {
+                this.setState({
+                    errMessage: data.message
+                })
+            }
+            if (data && data.errCode === 0) {
+                console.log('check user login ', data.user)
+                this.props.userLoginSuccess(data.user)
+            }
+        } catch (error) {
+
+            this.setState({
+                errMessage: error.response.data.message
+            })
+        }
+    }
+
+    handleOnclickShowHidePass = (event) => {
+        this.setState({
+            isShowHidePassword: !this.state.isShowHidePassword
+        })
+    }
+
+    handleOnPressEnter = (event) => {
+        if (event.key === 'Enter') {
+            this.handleLogin()
+        }
     }
 
     render() {
@@ -22,18 +78,30 @@ class Login extends Component {
                         <div className='col-12 text-center login-text'>Login</div>
                         <div className='col-12 form-group login-input mt-3'>
                             <label className='input-label'>Username</label>
-                            <input className='form-control input-text' type='text' placeholder='Enter your usename'></input>
+                            <input className='form-control input-text'
+                                onChange={(event) => this.handleOnchangeUsername(event)}
+                                onKeyPress={(event) => { this.handleOnPressEnter(event) }}
+                                type='text' placeholder='Enter your usename'></input>
                         </div>
 
                         <div className='col-12 form-group login-input'>
                             <label className='input-label'>Password</label>
-                            <input className='form-control input-text' type='password' placeholder='Enter your password'></input>
+                            <div className='custom-input-password'>
+                                <input className='form-control input-text'
+                                    onChange={(event) => { this.handleOnchangePassword(event) }}
+                                    onKeyPress={(event) => { this.handleOnPressEnter(event) }}
+                                    type={this.state.isShowHidePassword ? 'text' : 'password'} placeholder='Enter your password'></input>
+                                <i className={this.state.isShowHidePassword ? "fas fa-eye" : "fas fa-eye-slash"} onClick={(event) => this.handleOnclickShowHidePass(event)}></i>
+                            </div>
+                        </div>
+                        <div className='col-12'>
+                            <span style={{ color: "red" }}>{this.state.errMessage}</span>
                         </div>
                         <div className='col-12'>
                             <a className='forgot-pass'>Forgor password?</a>
                         </div>
                         <div className='col-12'>
-                            <button className='btn-login'>Login</button>
+                            <button onClick={(event) => { this.handleLogin(event) }} className='btn-login'>Login</button>
                         </div>
 
 
@@ -42,8 +110,8 @@ class Login extends Component {
                         </div>
 
                         <div className='col-12 social mt-3'>
-                            <i class="fab fa-google google"></i>
-                            <i class="fab fa-facebook-f facebook"></i>
+                            <i className="fab fa-google google"></i>
+                            <i className="fab fa-facebook-f facebook"></i>
                         </div>
                     </div>
                 </div>
@@ -61,8 +129,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
+        // userLoginFail: () => dispatch(actions.userLoginFail()),
     };
 };
 
