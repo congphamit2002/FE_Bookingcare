@@ -1,0 +1,60 @@
+.booking-modal-container {
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+        .b-modal-header {
+            height: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-bottom: 1px solid #ccc;
+
+            .header-title {
+                span {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+
+            .header-icon {
+                span {
+                    font-size: 20px;
+                    padding: 10px;
+                }
+            }
+        }
+
+        .b-modal-body {
+            height: 80%;
+            padding: 10px 20px 30px;
+        }
+
+        .b-modal-footer {
+            height: 10%;
+            border-top: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            
+            .gr-btn {
+                
+                .btn-accept {
+                    background-color: orange;
+                    padding: 0 8px;
+                    border-radius: 4px;
+                    margin-right: 12px;
+                    outline: none;
+                }
+
+                .btn-cancel {
+                    background-color: #b4a9a9;
+                    padding: 0 20px;
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+
+}

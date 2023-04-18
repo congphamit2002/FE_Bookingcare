@@ -205,7 +205,6 @@ class UserManageRedux extends Component {
         let genders = this.state.arrGender;
         let roles = this.state.arrRoles;
         let positions = this.state.arrPositions;
-        console.log('check state ', this.state)
 
         return (
             <div>

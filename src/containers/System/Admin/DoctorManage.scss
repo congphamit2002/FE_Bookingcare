@@ -1,0 +1,19 @@
+.doctor-manage-container {
+    .description-doctor {
+        display: flex;
+        gap: 16px;
+
+        .selected-doctor {
+            width: 50%;
+        }
+
+        .infor-detail {
+            width: 50%;
+        }
+        
+    }
+        .editor {
+            margin: 20px 0 10px;
+        }
+    
+}

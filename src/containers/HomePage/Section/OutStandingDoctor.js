@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import * as actions from '../../../store/actions'
 import { LANGUAGES } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router'
+
 
 
 class OutStandingDoctor extends Component {
@@ -27,11 +29,16 @@ class OutStandingDoctor extends Component {
         }
     }
 
+
+    handleViewDetailDoctor = (item) => {
+        console.log('id doctor ', item.id)
+        if(this.props.history) {
+            this.props.history.push(`/detail-doctor/${item.id}`)
+        }
+    }
+
     render() {
         let doctors = this.state.arrDoctors;
-        doctors = doctors.concat(doctors)
-        doctors = doctors.concat(doctors)
-        console.log(doctors)
         return (
             <>
                 <div className='section-container doctor-section'>
@@ -54,7 +61,9 @@ class OutStandingDoctor extends Component {
                                                 imgBase64 = new Buffer(item.image, 'base64').toString('binary');
                                             }
                                             return (<div className='slider-item'>
-                                                <div className='doctor-item-container'>
+                                                <div className='doctor-item-container'
+                                                    onClick={() => { this.handleViewDetailDoctor(item) }}
+                                                >
                                                     <div className='img-outline'>
                                                         <div className='section-slider-img doctor-img'
                                                             style={{ backgroundImage: `url(${imgBase64})` }}></div>
@@ -95,4 +104,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor));

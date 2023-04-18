@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import './TableUserRedux.scss'
 import * as actions from '../../../store/actions'
 
-
 class TableUserRedux extends Component {
 
     constructor(props) {
@@ -23,6 +22,8 @@ class TableUserRedux extends Component {
             gender: '',
         }
     }
+
+
 
     componentDidMount() {
         this.props.getAllUserStart();

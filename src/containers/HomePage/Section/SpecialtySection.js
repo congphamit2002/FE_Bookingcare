@@ -1,47 +1,58 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Slider from "react-slick";
+import { handleGetAllSpecialties } from '../../../services/userService'
+import { FormattedMessage } from 'react-intl';
 
 class SpecialtySection extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            arrSpecialties: []
+        }
+    }
+
+    async componentDidMount() {
+        let res = await handleGetAllSpecialties();
+        if (res && res.errCode === 0) {
+            console.log(res)
+            if (res.data && res.data.length > 0) {
+                this.setState({
+                    arrSpecialties: res.data
+                })
+            }
+        }
+    }
+
     render() {
-        console.log(this.props.settings)
+        let { arrSpecialties } = this.state
+        console.log('check state specialty ', arrSpecialties.length)
         return (
             <>
                 <div className='section-container'>
                     <div className='section-content'>
                         <div className='section-content-up'>
-                            <span className='content-text'>Chuyên khoa phổ biến</span>
-                            <button className='btn-see-more'>XEM THÊM</button>
+                            <span className='content-text'><FormattedMessage id="home-page.specialty" /></span>
+                            <button className='btn-see-more'><FormattedMessage id="home-page.more-infor" /></button>
                         </div>
 
                         <div className='section-content-down'>
                             <div className='section-slider'>
                                 <Slider {...this.props.settings}>
-                                    <div className='slider-item'>
-                                        <div className='section-slider-img specialty-img'></div>
-                                        <div className='slider-text'>Cơ xương khớp</div>
-                                    </div>
-                                    <div className='slider-item'>
-                                        <div className='section-slider-img specialty-img'></div>
-                                        <div className='slider-text'>Cơ xương khớp</div>
-                                    </div>
-                                    <div className='slider-item'>
-                                        <div className='section-slider-img specialty-img'></div>
-                                        <div className='slider-text'>Cơ xương khớp</div>
-                                    </div>
-                                    <div className='slider-item'>
-                                        <div className='section-slider-img specialty-img'></div>
-                                        <div className='slider-text'>Cơ xương khớp</div>
-                                    </div>
-                                    <div className='slider-item'>
-                                        <div className='section-slider-img specialty-img'></div>
-                                        <div className='slider-text'>Cơ xương khớp</div>
-                                    </div>
-                                    <div className='slider-item'>
-                                        <div className='section-slider-img specialty-img'></div>
-                                        <div className='slider-text'>Cơ xương khớp</div>
-                                    </div>
+                                    {
+                                        arrSpecialties && arrSpecialties.length > 0
+                                        && arrSpecialties.map((item, index) => {
+                                            return (
+                                                <div className='slider-item' key={index}>
+                                                    <div className='section-slider-img'
+                                                        style={{ backgroundImage: `url(${item.image})` }}
+                                                    ></div>
+                                                    <div className='slider-text'>{item.name}</div>
+                                                </div>
+                                            )
+                                        })
+                                    }
                                 </Slider>
                             </div>
                         </div>

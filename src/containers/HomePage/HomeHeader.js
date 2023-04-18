@@ -5,7 +5,8 @@ import './HomeHeader.scss'
 import logo from '../../assets/images/logo.svg'
 import { FormattedMessage } from 'react-intl';
 import { changLanguageApp } from '../../store/actions/appActions';
-import { LANGUAGES } from '../../utils'
+import { withRouter } from 'react-router'
+import { LANGUAGES, path } from '../../utils'
 
 class HomeHeader extends Component {
 
@@ -13,15 +14,20 @@ class HomeHeader extends Component {
         this.props.changeLanguageAppRedux(language)
     }
 
+    handleBackToHome = () => {
+        this.props.history.push(path.HOMEPAGE)
+    }
+
     render() {
-        console.log('check props ', this.props)
         return (
             <div>
                 <div className='home-header-container'>
                     <div className='home-header-content'>
                         <div className='header-content-left'>
                             <i className="fas fa-bars"></i>
-                            <img src={logo}></img>
+                            <img src={logo}
+                                onClick={() => { this.handleBackToHome() }}
+                            ></img>
                         </div>
                         <div className='header-content-center'>
                             <div className='header-menu'>
@@ -62,79 +68,82 @@ class HomeHeader extends Component {
 
                 </div>
 
-                <div className='home-banner-container'>
-                    <div className='home-banner-content'>
-                        <div className='banner-content-up'>
-                            <div className='content-title-up'><FormattedMessage id="home-banner.medical-background" /></div>
-                            <div className='content-title-down'><FormattedMessage id="home-banner.health-care" /></div>
-                            <div className='content-search'>
-                                <i className="fas fa-search"></i>
-                                <input type='text' />
+                {
+                    this.props.isShowBanner &&
+                    <div className='home-banner-container'>
+                        <div className='home-banner-content'>
+                            <div className='banner-content-up'>
+                                <div className='content-title-up'><FormattedMessage id="home-banner.medical-background" /></div>
+                                <div className='content-title-down'><FormattedMessage id="home-banner.health-care" /></div>
+                                <div className='content-search'>
+                                    <i className="fas fa-search"></i>
+                                    <input type='text' />
+                                </div>
+
                             </div>
+                            <div className='banner-content-down'>
+                                <ul className='options-list'>
+                                    <li className='options-child'>
+                                        <i className="far fa-hospital"></i>
+                                        <div className='options-child-text'>
+                                            <span><FormattedMessage id="home-banner.specialty-examination" /></span>
+                                        </div>
+                                    </li>
+                                    <li className='options-child'>
+                                        <i className="fas fa-mobile-alt"></i>
+                                        <div className='options-child-text'>
+                                            <span><FormattedMessage id="home-banner.remote-examination" /></span>
+                                        </div>
+                                    </li>
+                                    <li className='options-child'>
+                                        <i className="fas fa-procedures"></i>
+                                        <div className='options-child-text'>
+                                            <span><FormattedMessage id="home-banner.general-examination" /></span>
+                                        </div>
+                                    </li>
+                                    <li className='options-child'>
+                                        <i className="fas fa-flask"></i>
+                                        <div className='options-child-text'>
+                                            <span><FormattedMessage id="home-banner.medical-test" /></span>
+                                        </div>
+                                    </li>
+                                    <li className='options-child'>
+                                        <i className="fas fa-heart"></i>
+                                        <div className='options-child-text'>
+                                            <span><FormattedMessage id="home-banner.mental-health" /></span>
+                                        </div>
+                                    </li>
+                                    <li className='options-child'>
+                                        <i className="fas fa-user-md"></i>
+                                        <div className='options-child-text'>
+                                            <span><FormattedMessage id="home-banner.dental-examination" /></span>
+                                        </div>
+                                    </li>
+                                    <li className='options-child'>
+                                        <i className="fas fa-archive"></i>
+                                        <div className='options-child-text'>
+                                            <span><FormattedMessage id="home-banner.surgery-package" /></span>
+                                        </div>
+                                    </li>
+                                    <li className='options-child'>
+                                        <i className="fas fa-ambulance"></i>
+                                        <div className='options-child-text'>
+                                            <span><FormattedMessage id="home-banner.medical-products" /></span>
+                                        </div>
+                                    </li>
 
-                        </div>
-                        <div className='banner-content-down'>
-                            <ul className='options-list'>
-                                <li className='options-child'>
-                                    <i className="far fa-hospital"></i>
-                                    <div className='options-child-text'>
-                                        <span><FormattedMessage id="home-banner.specialty-examination" /></span>
-                                    </div>
-                                </li>
-                                <li className='options-child'>
-                                    <i className="fas fa-mobile-alt"></i>
-                                    <div className='options-child-text'>
-                                        <span><FormattedMessage id="home-banner.remote-examination" /></span>
-                                    </div>
-                                </li>
-                                <li className='options-child'>
-                                    <i className="fas fa-procedures"></i>
-                                    <div className='options-child-text'>
-                                        <span><FormattedMessage id="home-banner.general-examination" /></span>
-                                    </div>
-                                </li>
-                                <li className='options-child'>
-                                    <i className="fas fa-flask"></i>
-                                    <div className='options-child-text'>
-                                        <span><FormattedMessage id="home-banner.medical-test" /></span>
-                                    </div>
-                                </li>
-                                <li className='options-child'>
-                                    <i className="fas fa-heart"></i>
-                                    <div className='options-child-text'>
-                                        <span><FormattedMessage id="home-banner.mental-health" /></span>
-                                    </div>
-                                </li>
-                                <li className='options-child'>
-                                    <i className="fas fa-user-md"></i>
-                                    <div className='options-child-text'>
-                                        <span><FormattedMessage id="home-banner.dental-examination" /></span>
-                                    </div>
-                                </li>
-                                <li className='options-child'>
-                                    <i className="fas fa-archive"></i>
-                                    <div className='options-child-text'>
-                                        <span><FormattedMessage id="home-banner.surgery-package" /></span>
-                                    </div>
-                                </li>
-                                <li className='options-child'>
-                                    <i className="fas fa-ambulance"></i>
-                                    <div className='options-child-text'>
-                                        <span><FormattedMessage id="home-banner.medical-products" /></span>
-                                    </div>
-                                </li>
+                                    <li className='options-child'>
+                                        <i className="fas fa-notes-medical"></i>
+                                        <div className='options-child-text'>
+                                            <span><FormattedMessage id="home-banner.company-health" /></span>
+                                        </div>
+                                    </li>
+                                </ul>
 
-                                <li className='options-child'>
-                                    <i className="fas fa-notes-medical"></i>
-                                    <div className='options-child-text'>
-                                        <span><FormattedMessage id="home-banner.company-health" /></span>
-                                    </div>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div >
-                </div>
+                            </div>
+                        </div >
+                    </div>
+                }
             </div>
         );
     }
@@ -155,4 +164,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));
