@@ -47,20 +47,10 @@ class Login extends Component {
                 })
             }
             if (data && data.errCode === 0) {
+                console.log('check user login ', data.user)
                 this.props.userLoginSuccess(data.user)
-                console.log('login success')
             }
         } catch (error) {
-            console.log('in catch')
-            // if (error.respone) {
-            //     console('has respone')
-            //     if (error.responerror.data) {
-            //         console.log('has data')
-            //         this.setState({
-            //             errMessage: error.response.data.message
-            //         })
-            //     }
-            // }
 
             this.setState({
                 errMessage: error.response.data.message
@@ -74,6 +64,12 @@ class Login extends Component {
         })
     }
 
+    handleOnPressEnter = (event) => {
+        if (event.key === 'Enter') {
+            this.handleLogin()
+        }
+    }
+
     render() {
         return (
             <div className='login-background'>
@@ -84,6 +80,7 @@ class Login extends Component {
                             <label className='input-label'>Username</label>
                             <input className='form-control input-text'
                                 onChange={(event) => this.handleOnchangeUsername(event)}
+                                onKeyPress={(event) => { this.handleOnPressEnter(event) }}
                                 type='text' placeholder='Enter your usename'></input>
                         </div>
 
@@ -92,6 +89,7 @@ class Login extends Component {
                             <div className='custom-input-password'>
                                 <input className='form-control input-text'
                                     onChange={(event) => { this.handleOnchangePassword(event) }}
+                                    onKeyPress={(event) => { this.handleOnPressEnter(event) }}
                                     type={this.state.isShowHidePassword ? 'text' : 'password'} placeholder='Enter your password'></input>
                                 <i className={this.state.isShowHidePassword ? "fas fa-eye" : "fas fa-eye-slash"} onClick={(event) => this.handleOnclickShowHidePass(event)}></i>
                             </div>

@@ -1,0 +1,89 @@
+.extra-inf-container {
+                border-right: 1px solid #ccc;
+                border-left: 1px solid #ccc;
+                padding: 0 10px;
+    .extra-inf-content {
+        .content-up {
+             display: flex;
+             flex-direction: column;
+
+             .content-title {
+                text-transform: uppercase;
+                color: #666666;
+                font-size: 14px;
+                font-weight: bold;
+                letter-spacing: 1px;
+             }
+
+             .clinic-name {
+                font-size: 14px;
+                color: #000;
+                font-weight: bold;
+                padding: 8px 0;
+             }
+
+             .clinic-address {
+                padding: 0 0 12px;
+                border-bottom: 1px solid #ccc;
+             }
+        }
+
+        .content-down {
+            padding: 8px 0;
+            .show-hide-table {
+                font-size: 14px;
+                letter-spacing: 1px;
+                color: #45c3d2;
+                padding: 0 4px;
+            }   
+            .price {
+                text-transform: uppercase;
+                color: #666666;
+                font-size: 14px;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+
+            .extra-table {
+                // display: flex;
+                // flex-direction: column;
+                margin-top: 10px;
+                .table-up {
+                    // display: flex;
+                    // justify-content: space-between;
+                    border: 1px solid #ccc;
+                    background-color: #f8f8f8;
+                    padding: 6px 6px;
+                    .content-table-up {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 16px;
+                    }
+
+                    // #45c3d2
+
+                    .content-table-down {
+                        span {
+                            color: #666666;
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+                .table-down {
+                    border: 1px solid #ccc;
+                    background-color: #eee;
+                    padding: 6px 6px;
+                    
+                }
+
+                .show-hide-table {
+                    font-size: 14px;
+                    letter-spacing: 1px;
+                    color: #45c3d2;
+                    padding: 8px 0;
+                }
+            }
+        }
+    }
+}
